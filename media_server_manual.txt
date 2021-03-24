@@ -1,0 +1,138 @@
+All required installations binaries+licenses are in "Originals"
+
+
+
+Installing Cameras + OptiTrack
+---------------------------------
+
+- HW: TO be documented: install optitrack, netork cbles ,,,,
+- SW: install Motive + use the calibration in: "8-Pime17-Calibrations\Exceptional (MeanErr 0.246 mm) 2021-03-04 6.cal"
+- Install the software Madelyn developed
+
+
+Installing the projectors + Ventuz
+---------------------------------
+0- In "AMD radeon pro advanced settings" (from the desktop, right-click) -> preferences (top right) -> reset factory settings
+
+1- in windows "display settings" make sure you see the four projectors. Make sure their orientations are Landscape (not flipped) and the resolution is 3840x2160 for each of the four projectors. Make sure that the frame rates are all 25hz.
+
+2- in "AMD radeon pro settings" (from the desktop, right-click) got to EyeFinity -> Advanced Setup -> 2x2 -> put the prijectors on the grid as they are on the real world -> Select Fill -> Create !
+
+3- in windows "display settings" make sure the 4 displays are now one and the resolution is 8192x4320 for each of the four projectors.
+
+4- (optional) in "AMD radeon pro advanced settings" (from the desktop, right-click) -> arrange Eyfinity Group -> make sure the arangment is correct.
+
+5- Install Ventuz 6. In "Ventuz Configuration Edition" configure it as follows or load the configs from ("CUBLab Ventuz Config"): 
+	a- delete all old configs in all sections (Multitouch ..., Audio ..., and Layout ....)
+	b- create new config for "Multitouch ... " wiuth defaults (give name = general_cfg)
+	c- create new config for "Audio ..." (name = hw_cfg) -> select "Graphics Adapter ..." -> select the display of the Eyefinity Group -> set the FPS to 25hz -> save
+	d- creata new config for "Layour ..." (name = layout_2x2) -> it identifes 5 display, remove the one for the monitor and keep the four for the projectors
+	   if the displays are not correctly identifed, follow the steps to add them:
+		- click + to add a mchine and sekect 2x2 for displays
+		- make sure the resoultion is 1920x1080
+		- click add
+		- click on the old machine and delete
+		- now you have 4 displays but not correct ids
+		- click + to add a mchine and sekect 2x2 for displays
+		- make sure the resoultion is 1920x1080
+		- click add
+		- now you have two machines each with 4 displausn and only one machine has correct ids (correct ids: 1.1, 1.2, 1.3, and 1.4)
+		- remove the 4 displays with incorrect ids
+		- move the machine to position 0,0
+		- save and close
+	e- in the "live project" select the Default live demo and click start, do "yes" if prompted
+	f- the 4 real projectors should show the live show
+	g- go back to "layout_2x2" and click edit
+	h- overlap the four projectos with pixels of similar rations to what in the real-world. you may measure the overlaving in realworld and calc its percentage and do the math to find how many pixels you need to overlap vertically and horizontally. save and dot close
+	i- go to Shaping pane.
+	j- use the help of someone or a remote control to adjust the four projectos such that the circile is in the cinter and aligned in all projectors, that all the image is inside the white line, and that the grid lines al almost aliged.
+	k- go to edges pane and mark on automatic edge blending to neutralize the colors in edges
+
+
+Running an example to show something on the arena:
+-----------------------------------------------------
+- make sure ventuz is installed and configured.
+- run the pre-made Ventuz Presentation for receiving from NDI: "NDIReceiver\Presentations\NDIReceiver.vpr"
+- download and install: https://github.com/HyConSys/NDIRestServer
+- run the example in "examples/python/arcade": python3 example.py
+- in Ventuz WenUI, change the live stream to the one received fron the edxample
+- it showld show the arcade body moving on the arena !
+
+		
+Installing ROS (optional for windows)
+---------------------------------
+- we install ROS 2 Foxy Fitzroy using Windows binary installation method: (all details = https://docs.ros.org/en/foxy/Installation/Windows-Install-Binary.html):
+	- install Chocolate from the PowerShell runing as admin: 
+		> Set-ExecutionPolicy AllSigned
+		> Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+		> choco
+	- continue with the admin powershell and install python 3.8 (check it is installed to C:\Python38 after installation):
+		> choco install -y python --version 3.8.3
+	- continue with the admin powershell and install VC-stuff:
+		> choco install -y vcredist2013 vcredist140
+	- Download the Win64 OpenSSL v1.1.1h OpenSSL installer from this page (https://slproweb.com/products/Win32OpenSSL.html). Scroll to the bottom of the page and download Win64 OpenSSL v1.1.1h. Don’t download the Win32 or Light versions. I used the x64 MSI installer of the not-light version. Run the installer with default parameters. It gets installed in C:\Program Files\OpenSSL-Win64 and the DLL goes to default windows folders. Run the command to set its env variiable:
+		> setx -m OPENSSL_CONF "C:\Program Files\OpenSSL-Win64\bin\openssl.cfg"
+	- Add The bin folder "C:\Program Files\OpenSSL-Win64\bin\" to system's env PATH. Dont forget to include the slash at the end of the path.
+	- Instrall VS 2019 Community edition with C++ (unmark CMAKE).
+	- Install OpenCV:
+		- download binaries: https://github.com/ros2/ros2/releases/download/opencv-archives/opencv-3.4.6-vc16.VS2019.zip
+		- unpack the conrtents to "C:\opencv". I extracted it and found an opencv folder that i moved to the C drive.
+		- from the admin PowerShell, set its env var:
+			> setx -m OpenCV_DIR C:\opencv
+		- add the bin path "C:\opencv\x64\vc16\bin" to the system Path env variable (no slash is needed).
+	- install cmake with choco (admin powershell)
+		> choco install -y cmake
+		- if it works, add the bin path "C:\Program Files\CMake\bin" to the path env var.
+		- it failed to install and i installed it using the installer: https://github.com/Kitware/CMake/releases/download/v3.20.0-rc4/cmake-3.20.0-rc4-windows-x86_64.msi (in installation, mark on "add to PATH for all users" and make sure it installs to "C:\Program Files\CMake\")
+
+	- Please download these packages from this GitHub repository (https://github.com/ros2/choco-packages/releases/tag/2020-02-24): asio.1.12.1.nupkg bullet.2.89.0.nupkg cunit.2.1.3.nupkg eigen.3.3.4.nupkg tinyxml-usestl.2.6.2.nupkg tinyxml2.6.0.0.nupkg log4cxx.0.10.0.nupkg (dont donload others at least one is not needed)
+		- i downloaded the to "C:\Users\CUBLab\Downloads"
+		- i installed them (admin powershell):
+			>  choco install -y -s C:\Users\CUBLab\Downloads asio cunit eigen tinyxml-usestl tinyxml2 log4cxx bullet
+
+	- install req python packages (admin powershell):
+		> python -m pip install -U catkin_pkg cryptography empy ifcfg lark-parser lxml netifaces numpy opencv-python pyparsing pyyaml setuptools
+		> python -m pip install -U pydot PyQt5
+
+	- install graphviz (admin powershekk)
+		> choco install graphviz
+		- it gets installed to C:\Program Files\Graphviz (double check)
+		- add "C:\Program Files\Graphviz\bin" to sys Path env var.
+		
+	- Download ROS 2 Foxy release from https://github.com/ros2/ros2/releases:
+		- got this: https://github.com/ros2/ros2/releases/download/release-foxy-20201211/ros2-foxy-20201211-windows-release.amd64.zip
+		- Unpack the zip file to (C:\dev\ros2_foxy)
+	
+	- Source ROS 2 admin powershell): 
+		> Set-ExecutionPolicy Unrestricted
+
+	- Anytime befre using ROS2 in normal powershell:
+		> C:\dev\ros2_foxy\local_setup.ps1
+
+	- Try one ROS examples (C++ talker and Python listner)
+		- In a command shell, set up the ROS 2 environment as described above and then run a C++ talker:
+			> ros2 run demo_nodes_cpp talker
+		- Start another command shell, set up the ROS 2 environment as described above and run a Python listener:
+			> ros2 run demo_nodes_py listener
+
+	- Try some RViz Example:
+		- In a command shell, set up the ROS 2 environment as described above and then run the dmmy robot:
+			> ros2 launch dummy_robot_bringup dummy_robot_bringup.launch.py
+		- Start another command shell, set up the ROS 2 environment as described above and run rviz2:
+			> rviz2
+		- This opens RViz2. Assuming you have your dummy_robot_bringup still launched, you can now add the TF display plugin and configure your global frame to "world". Once you did that, you should see a robot arm moving.
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
