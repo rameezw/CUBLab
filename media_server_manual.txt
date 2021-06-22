@@ -12,11 +12,11 @@ Installing Cameras + OptiTrack
 
 Installing the projectors + Ventuz
 ---------------------------------
-0- In "AMD radeon pro advanced settings" (from the desktop, right-click) -> preferences (top right) -> reset factory settings
+0- In "AMD radeon pro advanced settings" (from the desktop, right-click) -> preferences (top right) -> reset factory settings. Restart Windows.
 
-1- in windows "display settings" make sure you see the four projectors. Make sure their orientations are Landscape (not flipped) and the resolution is 3840x2160 for each of the four projectors. Make sure that the frame rates are all 25hz.
+1- in windows "display settings" make sure you see the four projectors. Make sure their orientations are Landscape (not flipped) and the resolution is 4096x2160 for each of the four projectors. Make sure that the frame rates are all 24hz.
 
-2- in "AMD radeon pro settings" (from the desktop, right-click) got to EyeFinity -> Advanced Setup -> 2x2 -> put the prijectors on the grid as they are on the real world -> Select Fill -> Create !
+2- in "AMD radeon pro settings" (from the desktop, right-click) search for "EyeFinity" ans start its "Advanced Setup" -> 2x2 -> put the prijectors on the grid as they are on the real world -> Select Fill -> Create !
 
 3- in windows "display settings" make sure the 4 displays are now one and the resolution is 8192x4320 for each of the four projectors.
 
