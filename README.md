@@ -16,7 +16,8 @@
   - Check that the symbolc control server is running properly.
     - Open the file log.txt located in the same file path, using Notepad++.
     - Click on the eye icon on the upper tool bar in Notepad++. This will allow us to see the updates being made to the log file. 
-7. Now we can run the robot.
+7. Now we can run the robot. The files for this can be found [here](https://github.com/HyConSys/deepracer-utils).
+
 We can access the DeepRacer robot by the following:
   ```
   $ ssh deepracer@192.168.1.70
@@ -26,3 +27,4 @@ We can access the DeepRacer robot by the following:
   $ cd examples/sym_control
   $ python closedloop_online.py
   ```
+  
