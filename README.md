@@ -7,6 +7,26 @@ As can be seen from the diagram, the lab is set up with two servers connected to
 
 ## Required Software
 
+### OptiTrack Motive
+
+[OptiTrack Motive](https://optitrack.com/software/) is the software used alongside with the 8 cameras in the lab to track rigid body data within the arena. 
+
+### Ventuz
+
+[Ventuz](https://www.ventuz.com/downloads/) is the software used to congiure the images from all 4 projectors into one, without overlaps of the images. 
+
+### OptiTrackRESTServer
+
+The [OptiTrackRESTServer application](https://github.com/HyConSys/OptiTrackRESTServer) is the localization server, used to retrieve each rigid body's location within the arena. 
+
+### NDIRestServer
+
+The [NDIRestServer application](https://github.com/HyConSys/NDIRestServer) is used to present the images corresponding to the locations of the various rigid bodies within the arena, and present them using a Ventuz presentation.
+
+### DeepRacer-utils
+
+[Deepracer-utils](https://github.com/HyConSys/deepracer-utils) is a series of code and examples which are used to access and control the AWS DeepRacer.
+
 ## Starting the Lab
 
 1. First make sure that the cameras and all four projectors are turned on and running.
