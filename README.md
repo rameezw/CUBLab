@@ -46,6 +46,8 @@ The [NDIRestServer application](https://github.com/HyConSys/NDIRestServer) is us
     - Click on the eye icon on the upper tool bar in Notepad++. This will allow us to see the updates being made to the log file. 
 7. Now we can run the robot. The files for this can be found [here](https://github.com/HyConSys/deepracer-utils).
 
+## Example: Symbolic Control
+
 We can access the DeepRacer robot by the following:
   ```
   $ ssh deepracer@192.168.1.70
