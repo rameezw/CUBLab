@@ -1,4 +1,12 @@
 # CUBLab
+
+## Lab Organization
+![Diagram of Lab](https://user-images.githubusercontent.com/70183533/124334875-b167b900-db55-11eb-81ff-5fbee1956edf.png)
+
+As can be seen from the diagram, the lab is set up with two servers connected to the router. The CUBLab Media Server is connected to the Cameras Switch, which powers the 8 OptiTrack cameras surrounding the arena in the lab. It is also connected via HDMI to 4 projectors spaced around the arena. The router also connects to the DeepRacer robot via Wi-Fi. 
+
+## Required Software
+
 ## Starting the Lab
 
 1. First make sure that the cameras and all four projectors are turned on and running.
