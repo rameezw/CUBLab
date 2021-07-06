@@ -1,5 +1,9 @@
 # CUBLab
 
+![Image of Lab](https://github.com/HyConSys/CUBLab/blob/main/Lab_Photo.png)
+
+The photo above demonstrates how everything looks once it is up and running. The red boxes represent the obstacles, the green boxes represent the targets, and the blue line is the path that the DeepRacer robot has taken to get to the obstacle. The cameras can be seen above the arena, which are responsible for tracking the locations of each rigid body within the arena, as well as the movement of the DeepRacer robot. 
+
 ## Lab Organization
 ![Diagram of Lab](https://user-images.githubusercontent.com/70183533/124334875-b167b900-db55-11eb-81ff-5fbee1956edf.png)
 
