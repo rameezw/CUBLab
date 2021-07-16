@@ -5,7 +5,7 @@
 The photo above demonstrates how everything looks once it is up and running. The red boxes represent the obstacles, the green boxes represent the targets, and the blue line is the path that the DeepRacer robot has taken to get to the obstacle. The cameras can be seen above the arena, which are responsible for tracking the locations of each rigid body within the arena, as well as the movement of the DeepRacer robot. 
 
 ## Lab Organization
-![Diagram of Lab](https://user-images.githubusercontent.com/70183533/124334875-b167b900-db55-11eb-81ff-5fbee1956edf.png)
+![Diagram of Lab](https://github.com/HyConSys/CUBLab/blob/main/Lab_Diagram.png)
 
 As can be seen from the diagram, the lab is set up with two servers connected to the router. The CUBLab Media Server is connected to the Cameras Switch, which powers the 8 OptiTrack cameras surrounding the arena in the lab. It is also connected via HDMI to 4 projectors spaced around the arena. The router also connects to the DeepRacer robot via Wi-Fi. 
 
