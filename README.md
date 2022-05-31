@@ -41,9 +41,9 @@ The [NDIRestServer application](https://github.com/HyConSys/NDIRestServer) is us
     - First place a rigid body in the arena, and go to the address: http://192.168.1.194:12345/OptiTrackRestServer. 
     - Make sure that the x,y coordinates and angle for any rigid body in the arena matches that which is showing at the server address.
     
-4. Run Ventuz, the program that will connect our simulation to the projectors, by navigating to: D:Workspace/NDIRestServer/ventuz/NDIRestServerReceiver/Presentation/NDIRestServerReceiver.vpr. Run the program.
+4. Run Ventuz, the program that will connect our simulation to the projectors, by navigating to: D:/Workspace/NDIRestServer/ventuz/NDIRestServerRecveiver/Presentation/NDIRestServerReceiver.vpr. Run the program.
   - Make sure Ventuz is not already running before doing this step.
-5. Start the simulation by navigating to: D:Workspace/pythonSimulator/simulate.py. Run the file simulate.py from terminal
+5. Start the simulation by navigating to: D:Workspace/pythonSimulator/start.py. Run the file start.py from terminal
 6. Run the symbolic control server by navigating to: D:Workspace/pFaces-SymbolicControl/ex_gb_fp/deepracer/run_d_1_online.bat.
   - Check that the symbolc control server is running properly.
     - Open the file log.txt located in the same file path, using Notepad++.
