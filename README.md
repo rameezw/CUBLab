@@ -47,7 +47,7 @@ The [NDIRestServer application](https://github.com/HyConSys/NDIRestServer) is us
     ![GUI Setup](GUI_Setup.png)
 3. Click on the "Initialize Environment" button located on the top-left corner. All necessary software will begin starting up, the process will take approximately 30 seconds.
 
-4. Once everything is up and running, start placing markers to the scene, or place virtual objects by selecting the object type, enter object size (leave blank for default sizes), and click on the simulation on the right to place object where mouse is pointed. Move added object position by clicking on the black dot centered on each object and drag to the desired location.
+4. Once everything is up and running, start placing markers to the scene, or place virtual objects by selecting the object type, enter object size (leave blank for default sizes), and click on the simulation on the right to place object where mouse is pointed. Move added object position by click and drag black dots centered on each object (marker objects cannot be moved).
 
     ![GUI Complete](GUI_Complete.png)
     
