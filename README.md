@@ -21,7 +21,7 @@ As can be seen from the diagram, the lab is set up with two servers connected to
 
 ### OptiTrackRESTServer
 
-The [OptiTrackRESTServer application](https://github.com/HyConSys/OptiTrackRESTServer) is the localization server, used to retrieve each rigid body's location within the arena. 
+The [OptiTrackRESTServer application](https://github.com/HyConSys/OptiTrackRESTServer) is the localization server, used to retrieve each rigid body's location within the arena. While running, the server will display information at [MediaServerIP:12345/OptiTrackRESTServer](192.168.1.194:12345/OptiTrackRESTServer).
 
 ### NDIRestServer
 
