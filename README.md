@@ -96,7 +96,7 @@ The 2 AWS DeepRacers in the lab:
   ```
 
   **Calibration:**
-  Calibration needs to be performed manually via python script in "~/deepracer-utils/put_best_cal.py" on startup.
+  Calibration needs to be performed on startup manually via python script in <u>~/deepracer-utils/put_best_cal.py</u>.
 
   **Source Code:**
   See [HyConSys/deepracer-utils](http://github.com/HyConSys/deepracer-utils/tree/main) for source code and more documentation
@@ -146,7 +146,7 @@ rest_client.restDELjson(["Obstacle11"])
 
 
 ## Symbolic Controller
-The symbolic controller runs on [pFaces](https://www.parallall.com/pFaces/) allowing the controller to run distributively on multiple GPUs. On compute module, start symbolic controller for DeepRacer by running "D:/Workspace/pFaces-SymbolicControl/ex_gb_fp/deepracer_rt/run_d_1_2_fast.bat". The contents in "run_d_1_2_fast.bat" is to first request system administration and then start pFaces symbolic controller on the last line with:
+The symbolic controller runs on [pFaces](https://www.parallall.com/pFaces/) allowing the controller to run distributively on multiple GPUs. On <u>Compute Module</u>, start symbolic controller for DeepRacer by running <u>D:/Workspace/pFaces-SymbolicControl/ex_gb_fp/deepracer_rt/run_d_1_2_fast.bat</u>. The contents in "run_d_1_2_fast.bat" is to first request system administration and then start pFaces symbolic controller on the last line with:
 ```bash
 pFaces -CG -d 1 2 -k gb_fp@..\..\kernel-pack -cfg .\deepracer_fast.cfg -co "project_name=DeepRacer1,..." -v0
 ```
