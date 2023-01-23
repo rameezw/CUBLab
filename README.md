@@ -123,9 +123,9 @@ The 2 AWS DeepRacers in the lab:
 
 
 ## Motive & Localization Server
-The Motive software is used to process the marker position data captured by OptiTrack cameras. To add a set of markers that form a new unique pattern for object recognition, place the new pattern in the arena, open the file in Destop folder "Motive_best_calibration", shift select the markers in the pattern and name it as a new object. Set the pivot of the pattern at the center location of the object for better display on projectors.
+The Motive software along with Localization Server works together to provide accurate location for marker objects in the arena.
 
-When Motive is running, start up the localization server. A GET requrest on the url address http://localhost:12345/OptiTrackRestServer will return object position information for each object recognized by Motive:
+Start Motive best calibration in <u>D:\Workspace\CUBLab\8-Pime17-Calibrations\best_calibration.cal</u>, then start up the localization server in <u>D:\Workspace\OptiTrackRESTServer\start_admin.bat</u>. A GET requrest on the url address http://localhost:12345/OptiTrackRestServer will return object position information for each object recognized by Motive:
 ```json
 {"DeepRacer1":"26.230331, -0.942712, -0.910002, -1.631047, 0.001046, 0.25, 0.35"}
 ```
