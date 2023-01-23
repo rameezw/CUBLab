@@ -96,7 +96,7 @@ The 2 AWS DeepRacers in the lab:
   ```
 
   **Calibration:**
-  Calibration needs to be performed on startup manually via python script in <u>~/deepracer-utils/put_best_cal.py</u>.
+  Calibration needs to be performed on startup manually via python script in **~/deepracer-utils/put_best_cal.py**.
 
   **Source Code:**
   See [HyConSys/deepracer-utils](http://github.com/HyConSys/deepracer-utils/tree/main) for source code and more documentation
@@ -125,7 +125,7 @@ The 2 AWS DeepRacers in the lab:
 ## Motive & Localization Server
 The Motive software along with Localization Server works together to provide accurate location for marker objects in the arena.
 
-Start Motive best calibration in <u>D:\Workspace\CUBLab\8-Pime17-Calibrations\best_calibration.cal</u>, then start up the localization server in <u>D:\Workspace\OptiTrackRESTServer\start_admin.bat</u>. A GET requrest on the url address http://localhost:12345/OptiTrackRestServer will return object position information for each object recognized by Motive:
+Start Motive best calibration in **D:\Workspace\CUBLab\8-Pime17-Calibrations\best_calibration.cal**, then start up the localization server in **D:\Workspace\OptiTrackRESTServer\start_admin.bat**. A GET requrest on the url address http://localhost:12345/OptiTrackRestServer will return object position information for each object recognized by Motive:
 ```json
 {"DeepRacer1":"26.230331, -0.942712, -0.910002, -1.631047, 0.001046, 0.25, 0.35"}
 ```
@@ -146,7 +146,7 @@ rest_client.restDELjson(["Obstacle11"])
 
 
 ## Symbolic Controller
-The symbolic controller runs on [pFaces](https://www.parallall.com/pFaces/) allowing the controller to run distributively on multiple GPUs. On <u>Compute Module</u>, start symbolic controller for DeepRacer by running <u>D:/Workspace/pFaces-SymbolicControl/ex_gb_fp/deepracer_rt/run_d_1_2_fast.bat</u>. The contents in "run_d_1_2_fast.bat" is to first request system administration and then start pFaces symbolic controller on the last line with:
+The symbolic controller runs on [pFaces](https://www.parallall.com/pFaces/) allowing the controller to run distributively on multiple GPUs. On **Compute Module**, start symbolic controller for DeepRacer by running **D:/Workspace/pFaces-SymbolicControl/ex_gb_fp/deepracer_rt/run_d_1_2_fast.bat**. The contents in "run_d_1_2_fast.bat" is to first request system administration and then start pFaces symbolic controller on the last line with:
 ```bash
 pFaces -CG -d 1 2 -k gb_fp@..\..\kernel-pack -cfg .\deepracer_fast.cfg -co "project_name=DeepRacer1,..." -v0
 ```
