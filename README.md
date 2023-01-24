@@ -37,7 +37,7 @@ The [NDIRestServer application](https://github.com/HyConSys/NDIRestServer) is us
 
 2. Open up terminal and type in the following command:
 
-    ```
+    ```ps
     cd D:/Workspace/ArenaManager
     python AutoDeploy.py
     ```
@@ -60,3 +60,110 @@ The [NDIRestServer application](https://github.com/HyConSys/NDIRestServer) is us
 ## Video Demo
 
 For video demos, visit [HyConSys Lab Youtube](https://www.youtube.com/channel/UCcI8WWWJ7LFaPKLJnH9tNXA)
+
+# More Notes for Robotic Platform
+
+## Lab Organization
+
+**Media Server:**
+
+  - IP Address: 192.168.1.194
+  
+  - Duties: Motive, Localization Server, Auto Deploy GUI, Projection
+
+**Compute Server:**
+
+  - IP Address: 192.168.1.147
+
+  - Duties: Sybolic Controller Server, OmegaThreads
+
+## AWS DeepRacer
+
+The 2 AWS DeepRacers in the lab:
+
+- DeepRacer 1 is the car with a lot of markers sticking way out.
+
+  <img src="deepracer1.jfif" width="400">
+
+  **IP Address:** 192.168.1.70
+
+  **System:** ROS 1 on Ubuntu
+
+  **Start Up:**
+  ```bash
+  source /opt/aws/deepracer/setup.sh
+  python ~/deepracer-utils/put_best_cal.py
+  ```
+
+  **Calibration:**
+  Calibration needs to be performed on startup manually via python script in **~/deepracer-utils/put_best_cal.py**.
+
+  **Source Code:**
+  See [HyConSys/deepracer-utils](http://github.com/HyConSys/deepracer-utils/tree/main) for source code and more documentation
+
+- DeepRacer 2 is the car with less markers and has a led panel on when powered up.
+  
+  <img src="deepracer2.jpeg" width="400">
+
+  **IP Address:** 192.168.1.110
+
+  **System:** ROS 2 Foxy on Ubuntu
+
+  **Start Up:**
+  ```bash
+  source /opt/ros/foxy/setup.bash
+  source /root/deepracer_ws/aws-deepracer-servo-pkg/install/setup.sh
+  ```
+
+  **Calibration:**
+  Calibration can be performed in the robot's device console web page at the IP address of the robot and is reused every time after start up.
+
+  **Source Code:**
+  See [Jeffreyyao/deepracer-utils](http://github.com/Jeffreyyao/deepracer-utils/tree/main) for source code and more documentation
+
+
+## Motive & Localization Server
+The Motive software along with Localization Server works together to provide accurate location for marker objects in the arena.
+
+Start Motive best calibration in **D:\Workspace\CUBLab\8-Pime17-Calibrations\best_calibration.cal**, then start up the localization server in **D:\Workspace\OptiTrackRESTServer\start_admin.bat**. A GET requrest on the url address http://localhost:12345/OptiTrackRestServer will return object position information for each object recognized by Motive:
+```json
+{"DeepRacer1":"26.230331, -0.942712, -0.910002, -1.631047, 0.001046, 0.25, 0.35"}
+```
+with the following format:
+```json
+{"Object_Name": "Time_Elapsed, X_Position, Y_Position, Rotation_Radian, Speed, X_Size, Y_Size"}
+```
+
+To add "virtual" objects without a marker pattern to be recognized to the localication server, an example with a PUT request to add and a DEL request to delete in Python:
+```python
+import RESTApiClient
+rest_client = RESTApiClient.RESTApiClient(localization_server_url)
+# add a virtual object "Obstacle11" to localization server
+rest_client.restPUTjson({"Obstacle11":"0.0, 2.025, 1.91, 0.0, 0.0, 0.68, 1.38"})
+# delete virtual object "Obstacle11"
+rest_client.restDELjson(["Obstacle11"])
+```
+
+
+## Symbolic Controller
+The symbolic controller runs on [pFaces](https://www.parallall.com/pFaces/) allowing the controller to run distributively on multiple GPUs. On **Compute Module**, start symbolic controller for DeepRacer by running **D:/Workspace/pFaces-SymbolicControl/ex_gb_fp/deepracer_rt/run_d_1_2_fast.bat**. The contents in "run_d_1_2_fast.bat" is to first request system administration and then start pFaces symbolic controller on the last line with:
+```bash
+pFaces -CG -d 1 2 -k gb_fp@..\..\kernel-pack -cfg .\deepracer_fast.cfg -co "project_name=DeepRacer1,..." -v0
+```
+where `-d` specifies which GPUs to use, `-k` specifies the kernel, `-cfg` passes in the configuration file, `-co` spcifies addition configuration settings. Contents in the "deepracer_fast.cfg" configuration file are self explanatory.
+
+The symbolic controller will run as a server at the specified port on localhost and will response to a GET request in the following REST json format:
+```json
+{"actions_list":"","current_state":"","is_control_ready":"false","is_control_recieved":"false","is_control_requested":"false","is_last_control_request":"false","is_last_synth_request":"","is_synth_requested":"false","mode":"collect_synth","obst_set":"","safe_set":"","target_set":""}
+```
+The workflow to controller synthesis retrieve control actions:
+
+  1. Synthesize controller: when controller in `"mode":"collect_synth"`, REST PUT json: `{"target_set":"...", "obst_set":"...", "is_last_synth_request":"...", "is_synth_requested":"..."}`.
+
+  1. Wait for `"is_control_ready":"true"`.
+
+  1. REST PUT `"is_control_received":"true"`.
+
+  1. Retrieve control actions by requesting a GET and control actions will be available in `"actions_list"`.
+
+To test the symbolic controller in simulation, run the "closedloop_rt.m" MATLAB script where it automates the switching of target position. The script will render the position and orientation of the DeepRacer based on its dynamics and control actions received.
