@@ -121,6 +121,14 @@ The 2 AWS DeepRacers in the lab:
   **Source Code:**
   See [Jeffreyyao/deepracer-utils](http://github.com/Jeffreyyao/deepracer-utils/tree/main) for source code and more documentation
 
+- TurtleBot is the unicycle robot with burger configuration.
+  
+  <img src="deepracer2.jpeg" width="400">
+
+  **IP Address:** 192.168.1.247
+
+  **System:** ROS Noetic on Ubuntu
+
 
 ## Motive & Localization Server
 The Motive software along with Localization Server works together to provide accurate location for marker objects in the arena.
